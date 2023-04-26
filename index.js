@@ -24,7 +24,7 @@ class Queue {
   }
 
   isEmpty() {
-    return (this.count - this.lowestCount) === 0;
+    return this.size() === 0;
   }
 
   size() {
@@ -33,6 +33,22 @@ class Queue {
 
   printSelf() {
     return this;
+  }
+  clear() {
+    this.count = 0;
+    this.lowestCount = 0;
+    this.items = {};
+  }
+  toString() {
+    if (this.isEmpty()) return '';
+    let dequeued = this.dequeue();
+    let objString = `${dequeued}`
+    while (!this.isEmpty()) {
+      dequeued = this.dequeue();
+      objString = `${objString}, ${dequeued}`;
+    }
+
+    return objString;
   }
 }
 
@@ -57,3 +73,6 @@ const self2 = queue.printSelf();
 console.log({ dequeued })
 console.log({ size })
 console.log({ self2 })
+
+const stringifiedQueue = queue.toString();
+console.log({ stringifiedQueue })

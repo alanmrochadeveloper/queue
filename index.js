@@ -13,7 +13,7 @@ class Queue {
   dequeue() {
     if (this.isEmpty()) return undefined;
     const removed = this.items[this.lowestCount];
-    delete this.items[this.lowesCount];
+    delete this.items[this.lowestCount];
     this.lowestCount++;
     return removed;
   }
@@ -30,4 +30,30 @@ class Queue {
   size() {
     return this.count - this.lowestCount
   }
+
+  printSelf() {
+    return this;
+  }
 }
+
+// bellow are some tests cases to make sure its is working
+
+const queue = new Queue();
+
+queue.enqueue(1);
+queue.enqueue(3);
+queue.enqueue(6);
+
+const self = queue.printSelf();
+
+console.log({ self })
+
+const dequeued = queue.dequeue();
+
+const size = queue.size();
+
+const self2 = queue.printSelf();
+
+console.log({ dequeued })
+console.log({ size })
+console.log({ self2 })
